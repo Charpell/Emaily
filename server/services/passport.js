@@ -5,6 +5,11 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
+passport.serializeUser((user, done) => {
+  // user.id is the unique id in mongo. Shortcut for getting it
+  done(null, user.id);
+});
+
 passport.use(
   new GoogleStrategy(
     {
