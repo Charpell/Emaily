@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: 'auth/google/callback'
+      callbackURL: '/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
       console.log(accessToken, refreshToken, profile);
@@ -25,7 +25,7 @@ app.get(
   })
 );
 
-app.get('auth/google/callback', passport.authenticate('google'));
+app.get('/auth/google/callback', passport.authenticate('google'));
 
 const PORT = process.env.PORT || 5000;
 
